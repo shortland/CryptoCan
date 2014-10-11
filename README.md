@@ -47,13 +47,16 @@
 - Slightly changed use of "Key" making the encoded, encrypted file content sections look different rather than a repeating. # still needs work. Appears as a "random-pattern" now, rather than "repeating" same base64 sequence in previous versions.
 - Some other smaller changes.
 - Contains "use Lingua::EN::Numbers qw(num2en num2en_ordinal);" on line 5. Systems will not have this module installed by default. Will need to manually install, OR remove line 5 in all, it is not specifically used for anything as of version 1.0.5.
+- FIXED easy "crackable" encryption key in previous versions, this is only a "quick-fix". By using GCN (Greatest common number) of the decoded data, put into an array, for each "data line". That GCN is the Raw Key.
+
 
 <b>Version 1.0.4</b>
 - Was accidentally released before 1.0.5, 1.0.5 was meant to be this version.
 - Only slight differences exist.
 - Removed .txt file extension of encrypted files. (No file extension now). Will need to right click and "open with" some text editor ect...
+- WARNING: The encryption KEY in this version is easily "crackable"!
 
 <b>Version 1.0.3</b>
 - First real "public" release.
 - Contains a walkthrough on how to use through command line.
-
+- WARNING: The encryption KEY in this version is easily "crackable"!
