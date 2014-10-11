@@ -23,6 +23,7 @@
 - Add different types of ways to deal with Key.
 - Completely redo some parts of encryption, & add new techniques of mixing stuff up.
 - Fix the problems listed.
+- Create a seperate version [for CGI peoples as-well], which would be a module rather than (what it is currently) standalone script.
 
 <h3>Problems</h3>
 - Key length is set to a max of 6, at 8 length, encryption and decryption begins to fail as the length of encrypted data is drastically increased. Key Length of 6 seems to be "flawless".
