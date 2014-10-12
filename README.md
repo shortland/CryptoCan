@@ -15,9 +15,9 @@
     
     <strong>Term::ANSIColor;</strong> # Optional, mainly used for font coloring when running in command line(will need to edit code if you are not going to use this module).
     
-    <strong>use File::Slurp;</strong> # When decrypting, for reading the encrypted file.
+    <strong>File::Slurp;</strong> # When decrypting, for reading the encrypted file.
     
-    <strong>use Lingua::EN::Numbers qw(num2en num2en_ordinal);</strong> # Module is not used specifically in 1.0.5, can be removed from top of the script. (Will be required in next version 1.0.6 most likey).
+    <strong>Lingua::EN::Numbers qw(num2en num2en_ordinal);</strong> # Module is not used specifically in 1.0.5, can be removed from top of the script. (Will be required in next version 1.0.6 most likey).
 
 - This is a command line script.
 
