@@ -42,6 +42,8 @@
 <h3>Version Differences & Info</h3>
 <b>(Newest down to oldest)</b>
 
+<b>Newest version is named "crypto.pl" only. Previous versions & names are bellow. Only "crypto.pl" is in development.</b>
+
 <b>Version 1.0.5</b>
 - If a user inputs a too-large Key to use, the script will issue a warning rather then kill the entire proccess's.
 - Slightly changed use of "Key" making the encoded, encrypted file content sections look different rather than a repeating. # still needs work. Appears as a "random-pattern" now, rather than "repeating" same base64 sequence in previous versions.
