@@ -15,7 +15,7 @@
     
     <strong>Term::ANSIColor;</strong> # Optional, mainly used for font coloring when running in command line(will need to edit code if you are not going to use this module).
     
-    <strong>File::Slurp;</strong> # When decrypting, for reading the encrypted file.
+    <strong>File::Slurp;</strong> # When decrypting, for reading the encrypted & pre-encrypted file.
   
 
 - This is a command line script.
