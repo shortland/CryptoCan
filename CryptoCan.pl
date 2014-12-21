@@ -6,12 +6,12 @@
 
 # To do:
 # - Finish IV.
+# - Changes to * and / formulas, more complexities.
+# - Fix bugs.
 
-# Partner to Partner transmitting:
-# Use date as key? Some third party entity.
-
+# Partner to Partner transmitting::
 # Transmitting through HTTP:
-# Uploading this raw data to a server... Not wise, uses lots and lots of space & ram... Security issues ect.
+# Uploading this raw data to a server... Not smart, uses lots of space & ram... Security issues ect...
 # Direct? IP to IP? (P2P)
 # Learn: use P2P::Transmission::Remote;
 
@@ -23,6 +23,13 @@ use File::Slurp;
 print color("yellow"), "========= My Encrypt/Decrypt 1.0.4 =========\n\n", color("reset");
 print "Please choose a method:\n (1) Encrypt\n (2) Decrypt\nMethod: ";
 chomp ($method = <STDIN>);
+
+if($method =~ "d"){
+    $directory = "_dev_";
+    $file_name = "test_flight";
+    
+    print my_encrypt("lol", "123456");
+}
 
 if($method =~ /^(1)$/){
     # Encrypt
@@ -79,7 +86,7 @@ if($method =~ /^(1)$/){
     print color("yellow"), "====================================\n\n", color("reset");
     print color("green"), "Encryption in process... Heads up! Encryption might take awhile depending on how long the string is you're encrypting. Same goes for decrypting. \nPercent (%) complete coming soon!\nEncrypting! ... ... ...".color("reset");
 
-    {print my_encrypt($string, $carry_string, $iv)};
+    {print my_encrypt($string, $carry_string)};
 }
 if($method =~ /^(2)$/){
     print color("yellow"), "====================================\n\n", color("reset");
@@ -104,34 +111,40 @@ if($method =~ /^(2)$/){
 
 ### BEGIN functions
 
-sub iv_encrypt { # Add for a future version.
-    # one way encryption. CANNOT get back original IV, like encrypting a password.
-    # this function will ONE-WAY encrypt $iv, then place it into the <<END of file.
-    # <& $encrypted_iv &>
-    my ($string) = @_;
+sub iv_encrypt {
+    my ($random) = @_;
+    # Impacts formulas ( * / ) when implementing key.
     
     my @string_array = split(//, $string);
     foreach $letter (@string_array) {
         push(@ordered, ord($char));
     }
- 
     foreach $letter2 (@ordered) {
         push(@ordered2, ord($letter2));
     }
     foreach $letter3 (@ordered2) {
         push(@ordered3, ord($letter3));
     }
-    
+    $iv = join "", @ordered3;
+
     return $iv;
 }
 
 sub my_encrypt {
-    my ($string, $carry_string, $iv) = @_;
+    my ($string, $carry_string) = @_;
     if (-d "$directory") {
         # directory exists
     } else {
         `mkdir $directory`;
     }
+    
+    # mk IV
+    
+    @charsiv = ("1".."9");
+    $random .= $chars4iv[rand @charsiv] for 1..4;
+    $iv = iv_encrypt($random);
+    
+    die "IV: $iv \n";
     my @characters = split(//, $string);
     foreach my $char (@characters) {
         $encrypted_char = (encode_base64(ord($char)));
