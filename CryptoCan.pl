@@ -1,19 +1,11 @@
 #!/usr/bin/perl
-# To Be new;
+# 1.2.0 rr
 
 # Known Bugs:
 # - When entering a file (path), File::Slurp has errors interpreting spaces in the file path/name.
 
-# To do:
-# - Finish IV.
-# - Changes to * and / formulas, more complexities.
-# - Fix bugs.
-
-# Partner to Partner transmitting::
-# Transmitting through HTTP:
-# Uploading this raw data to a server... Not smart, uses lots of space & ram... Security issues ect...
-# Direct? IP to IP? (P2P)
-# Learn: use P2P::Transmission::Remote;
+# Partner to Partner transmitting:
+# P2P::Transmission::Remote;
 
 use MIME::Base64::Perl;
 use Math::BigInt;
@@ -23,13 +15,6 @@ use File::Slurp;
 print color("yellow"), "========= My Encrypt/Decrypt 1.0.4 =========\n\n", color("reset");
 print "Please choose a method:\n (1) Encrypt\n (2) Decrypt\nMethod: ";
 chomp ($method = <STDIN>);
-
-if($method =~ "d"){
-    $directory = "_dev_";
-    $file_name = "test_flight";
-    
-    print my_encrypt("lol", "123456");
-}
 
 if($method =~ /^(1)$/){
     # Encrypt
@@ -137,14 +122,10 @@ sub my_encrypt {
     } else {
         `mkdir $directory`;
     }
-    
     # mk IV
-    
-    @charsiv = ("1".."9");
-    $random .= $chars4iv[rand @charsiv] for 1..4;
-    $iv = iv_encrypt($random);
-    
-    die "IV: $iv \n";
+    #@charsiv = ("1".."9");
+    #$random .= $chars4iv[rand @charsiv] for 1..4;
+    #$iv = iv_encrypt($random);
     my @characters = split(//, $string);
     foreach my $char (@characters) {
         $encrypted_char = (encode_base64(ord($char)));
